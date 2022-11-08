@@ -1,0 +1,22 @@
+<div class="card">
+    <div class="card-header">Anekdotai</div>
+    <div class="card-body">
+        <div *ngIf="!loading && !error">
+            {{ joke?.joke }}
+        </div>
+        <div class="alert alert-info" *ngIf="loading">
+            Kraunasi ...
+        </div>
+        <div class="alert alert-danger" *ngIf="error && !loading">
+            Įvyko klaida
+        </div>
+        <hr>
+        <div class="mb-3">
+            <select class="form-control" [(ngModel)]="category">
+                <option *ngFor="let c of categories" [value]="c">{{ c }}</option>
+            </select>
+
+        </div>
+        <button class="btn btn-success" (click)="onClickRefresh()" [disabled]="loading">Užkrauti anekdotą</button>
+    </div>
+</div>
